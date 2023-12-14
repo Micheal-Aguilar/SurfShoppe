@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+    // BrowserRouter as Router,
+    Routes,
+    Route,
+    HashRouter,
+} from 'react-router-dom';
 import Landing from './pages/landing/Landing.jsx';
 import OrderCreate from './pages/orderCreate/OrderCreate.jsx';
 import OrderHistory from './pages/orderHistory/OrderHistory.jsx';
@@ -6,11 +11,11 @@ import UserList from './pages/userList/UserList.jsx';
 import Navbar from './components/navbar/Navbar.jsx';
 import { FooterContainer } from './components/footer/Footer.jsx';
 import Login from './pages/login/Login.jsx';
-// import NotFound from './components/errorNotification/NotFound.jsx';
+import NotFound from './components/errorNotification/NotFound.jsx';
 
 function App() {
     return (
-        <Router>
+        <HashRouter>
             <Navbar />
             <Routes>
                 <Route
@@ -33,10 +38,13 @@ function App() {
                     path='/users'
                     element={<UserList />}
                 />
-                {/* <Route path="*" element={<NotFound />}/> */}
+                <Route
+                    path='*'
+                    element={<NotFound />}
+                />
             </Routes>
             <FooterContainer />
-        </Router>
+        </HashRouter>
     );
 }
 
